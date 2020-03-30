@@ -19,24 +19,24 @@ public class Main {
         while (true) {
             try {
 
+                tempCars = (ArrayList<Car>) cars.clone();
+
                 System.out.println("Herzlich Wilkommen bei BMW!\nWelches Model möchten sie gerne? 318i, 320i, 320ixDrive, 330ixDrive oder 340ixDrive?");
                 String model = scanner.nextLine();
+                findCarType(cars, model, tempCars);
 
                 System.out.println("Welche farbe soll das Auto haben? Schwarz, Weiss, Rot");
                 String color = scanner.nextLine();
+                findCarColor(cars, color, tempCars);
 
                 System.out.println("Welches interior soll das Auto haben? Stoff oder Leder");
                 String interior = scanner.nextLine();
+                findCarInterior(cars, interior, tempCars);
 
                 System.out.println("Welche Felgengöße möchten sie haben? 17, 18 oder 19 Zoll?");
                 int rimDiameter = scannerInt.nextInt();
+                findCarRim(cars, rimDiameter, tempCars);
 
-
-                tempCars = (ArrayList<Car>) cars.clone();
-
-                findCar(cars, model, tempCars);
-                findCar(cars, color, tempCars);
-                findCar(cars, interior, tempCars);
 
                 if (tempCars.size() > 0) {
                     carToSell = tempCars.get(0).clone();
@@ -58,10 +58,39 @@ public class Main {
         }
     }
 
-    private static void findCar(ArrayList<Car> cars, String setting, ArrayList<Car> tempCars) {
+    private static void findCarType(ArrayList<Car> cars, String setting, ArrayList<Car> tempCars) {
         if (tempCars.size() > 0) {
             for (int i = 0; i < tempCars.size(); i++) {
                 if (!cars.get(i).getType().equals(setting)) {
+                    tempCars.remove(i);
+                }
+            }
+        }
+    }
+
+    private static void findCarColor(ArrayList<Car> cars, String setting, ArrayList<Car> tempCars) {
+        if (tempCars.size() > 0) {
+            for (int i = 0; i < tempCars.size(); i++) {
+                if (!cars.get(i).getColor().equals(setting)) {
+                    tempCars.remove(i);
+                }
+            }
+        }
+    }
+
+    private static void findCarInterior(ArrayList<Car> cars, String setting, ArrayList<Car> tempCars) {
+        if (tempCars.size() > 0) {
+            for (int i = 0; i < tempCars.size(); i++) {
+                if (!cars.get(i).getInterior().equals(setting)) {
+                    tempCars.remove(i);
+                }
+            }
+        }
+    }
+    private static void findCarRim(ArrayList<Car> cars, Integer setting, ArrayList<Car> tempCars) {
+        if (tempCars.size() > 0) {
+            for (int i = 0; i < tempCars.size(); i++) {
+                if (cars.get(i).getRimDiameter() != setting) {
                     tempCars.remove(i);
                 }
             }

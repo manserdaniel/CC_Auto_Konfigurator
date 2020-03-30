@@ -6,9 +6,7 @@ public class Car implements Cloneable{
 
     private String color = "";
     private String interior = "";
-    private int power = 0;
     private int rimDiameter = 0;
-    private boolean trailerHitch = false;
 
     public Car(String brand, String type, String color, String interior, int rimDiameter, boolean trailerHitch) {
         this.brand = brand;
@@ -16,7 +14,6 @@ public class Car implements Cloneable{
         this.color = color;
         this.interior = interior;
         this.rimDiameter = rimDiameter;
-        this.trailerHitch = trailerHitch;
     }
 
     @Override
@@ -26,9 +23,7 @@ public class Car implements Cloneable{
                 ", type='" + type + '\'' +
                 ", color='" + color + '\'' +
                 ", interior='" + interior + '\'' +
-                ", power=" + power +
                 ", rimDiameter=" + rimDiameter +
-                ", trailerHitch=" + trailerHitch +
                 '}';
     }
 
@@ -56,14 +51,6 @@ public class Car implements Cloneable{
         this.interior = interior;
     }
 
-    public int getPower() {
-        return power;
-    }
-
-    public void setPower(int power) {
-        this.power = power;
-    }
-
     public int getRimDiameter() {
         return rimDiameter;
     }
@@ -72,18 +59,8 @@ public class Car implements Cloneable{
         this.rimDiameter = rimDiameter;
     }
 
-    public boolean isTrailerHitch() {
-        return trailerHitch;
-    }
-
-    public void setTrailerHitch(boolean trailerHitch) {
-        this.trailerHitch = trailerHitch;
-    }
-
     @Override
     protected Car clone() throws CloneNotSupportedException {
         return (Car)super.clone();
     }
-
-
 }
